@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anime Lucky Wheel</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      background: url('/static/zoro-kb2vrvklhvqve63x.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+      color: #fff;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      gap: 40px;
+      padding: 0 20px;
+    }
+    .character-left, .character-right {
+      width: 200px;
+      max-width: 20vw;
+      animation: float 4s ease-in-out infinite;
+      filter: drop-shadow(0 0 8pxrgb(221, 17, 55));
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .wheel-container {
+      text-align: center;
+      background: rgba(0,0,0,0.6);
+      border-radius: 25px;
+      padding: 30px 40px;
+      box-shadow: 0 0 20px #ff66cc;
+      width: 320px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-shadow: 0 0 10px #ff66cc;
+    }
+    #wheel {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: conic-gradient(#ff66cc 0% 25%, #cc33ff 25% 50%, #ff99cc 50% 75%, #cc66ff 75% 100%);
+      margin: 0 auto 25px;
+      box-shadow: 0 0 20px #ff66cc;
+      position: relative;
+      cursor: pointer;
+      transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+    #spin-btn {
+      background: #ff66cc;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 40px;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 0 12px #ff66cc;
+      transition: background 0.3s ease;
+    }
+    #spin-btn:hover {
+      background: #cc33ff;
+      box-shadow: 0 0 20px #cc33ff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <img src="/static/image2.png" alt="Anime Left" class="character-left" style="width:300px;height:500px"/>
+  
+  <div class="wheel-container">
+    <h1>Spin the Lucky Anime Wheel!</h1>
+    <div id="wheel"></div>
+    <button id="spin-btn">Spin</button>
+  </div>
+  
+  <img src="/static/image1.png" alt="Anime Right" class="character-right"style="width:400px;height:500px" />
+</div>
+
+<script>
+  const wheel = document.getElementById('wheel');
+  const spinBtn = document.getElementById('spin-btn');
+  let spinning = false;
+
+  spinBtn.addEventListener('click', () => {
+    if (spinning) return;
+    spinning = true;
+
+    const spinDegree = Math.floor(2000 + Math.random() * 3000);
+    wheel.style.transition = 'transform 4s cubic-bezier(0.33, 1, 0.68, 1)';
+    wheel.style.transform = `rotate(${spinDegree}deg)`;
+
+    setTimeout(() => {
+      spinning = false;
+      alert('You got a lucky anime character! (Goku )');
+      // You can add logic to show which character was won.
+    }, 4000);
+  });
+</script>
+
+</body>
+</html>

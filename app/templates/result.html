@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Intrusion Detection Result</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background: url('/static/bg_result.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+  .popup {
+    background: rgba(0,0,0,0.8);
+    border-radius: 25px;
+    padding: 30px 40px;
+    text-align: center;
+    width: 380px;
+    box-shadow: 0 0 30px #ff4466;
+    animation: fadeIn 0.8s ease forwards;
+    position: relative;
+  }
+  .alert-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ff4466;
+    margin-bottom: 15px;
+    animation: pulse 1.5s infinite alternate;
+  }
+  .safe-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #66ff66;
+    margin-bottom: 15px;
+  }
+  img.character {
+    width: 180px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px #ff4466);
+    animation: float 3s ease-in-out infinite;
+  }
+  a.button {
+    display: inline-block;
+    padding: 14px 36px;
+    background: #ff66cc;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 50px;
+    box-shadow: 0 0 20px #ff66cc;
+    transition: background 0.3s ease;
+  }
+  a.button:hover {
+    background: #cc33ff;
+    box-shadow: 0 0 30px #cc33ff;
+  }
+  @keyframes pulse {
+    0% { text-shadow: 0 0 10px #ff4466; }
+    100% { text-shadow: 0 0 30px #ff2233; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8);}
+    to { opacity: 1; transform: scale(1);}
+  }
+</style>
+</head>
+<body>
+
+<div class="popup">
+  {% if intrusion %}
+    <div class="alert-text">🚨 Intrusion Detected! 🚨</div>
+    <img src="{{ url_for('static', filename='image1.png') }}" alt="Alert Character" class="character" />
+    <p><strong>Warning:</strong> Your system is under attack! Please take immediate action.</p>
+  {% else %}
+    <div class="safe-text">✅ No Intrusion Detected! System is Secure.</div>
+    <img src="{{ url_for('static', filename='image2.png') }}" alt="Safe Character" class="character" />
+  {% endif %}
+  <a href="{{ url_for('reset_alert') }}" class="button">Back to Lucky Wheel</a>
+</div>
+
+</body>
+</html>

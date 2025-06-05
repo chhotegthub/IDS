@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.anime-background {
+    background-image: url('https://i.imgur.com/xDlj1rY.jpeg'); /* anime bg */
+}
+
+.main-container {
+    padding: 40px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin: 60px auto;
+    border-radius: 20px;
+    width: 70%;
+    box-shadow: 0 0 20px #ff4fcb;
+}
+
+textarea {
+    width: 90%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.submit-btn {
+    padding: 15px 30px;
+    background-color: #ff4fcb;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+    margin-top: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff4fcb;
+}
+
+.glow {
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 0 0 20px #ff4fcb;
+}
+
+.alert-mode {
+    background-image: url('https://i.imgur.com/yRwVVYZ.gif'); /* Glitchy alert bg */
+    animation: shake 0.4s infinite;
+}
+
+.safe-mode {
+    background-image: url('https://i.imgur.com/Va3bAnJ.jpeg');
+}
+
+.alert-image, .happy-image {
+    width: 250px;
+    margin: 20px 0;
+}
+
+.danger-glow {
+    color: red;
+    text-shadow: 0 0 10px red;
+}
+
+.safe-glow {
+    color: #00ffcc;
+    text-shadow: 0 0 10px #00ffcc;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px); }
+    25% { transform: translate(-1px, -2px); }
+    50% { transform: translate(-3px, 0px); }
+    75% { transform: translate(3px, 2px); }
+    100% { transform: translate(1px, -1px); }
+}
